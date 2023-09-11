@@ -1,0 +1,3 @@
+:host {
+  @apply flex justify-center w-full border-b border-neutral-500;
+}
