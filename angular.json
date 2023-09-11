@@ -63,7 +63,8 @@
               "browserTarget": "nelson-assignment:build:production"
             },
             "development": {
-              "browserTarget": "nelson-assignment:build:development"
+              "browserTarget": "nelson-assignment:build:development",
+              "proxyConfig": "src/proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"
