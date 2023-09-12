@@ -19,5 +19,7 @@
     <p>
       {{ product.attributes.price }}
     </p>
+    <div *ngIf="options.length > 0">
+      <app-select-input [options]="options"></app-select-input>
   </div>
 </div>

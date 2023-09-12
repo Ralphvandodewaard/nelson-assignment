@@ -8,6 +8,7 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
 import { ConfirmationModalComponent } from './confirmation-modal/confirmation-modal.component';
 import { CtaButtonComponent } from './shared/cta-button/cta-button.component';
 import { ProductCardComponent } from './shared/product-card/product-card.component';
+import { SelectInputComponent } from './shared/select-input/select-input.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ProductCardComponent } from './shared/product-card/product-card.compone
     ProductDetailComponent,
     ConfirmationModalComponent,
     CtaButtonComponent,
-    ProductCardComponent
+    ProductCardComponent,
+    SelectInputComponent
   ],
   imports: [
     BrowserModule,

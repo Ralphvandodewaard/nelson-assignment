@@ -1,0 +1,26 @@
+<div class="relative w-24">
+  <button
+    class="w-full p-1 text-center border border-neutral-500"
+    (click)="toggleDropdown()"
+  >
+    <p *ngIf="selectedOption">
+      {{ selectedOption }}
+    </p>
+    <p *ngIf="!selectedOption">
+      Kies maat
+    </p>
+  </button>
+  <div
+    *ngIf="dropdownOpen"
+    class="z-10 absolute flex flex-col w-full bg-white divide-y divide-neutral-500 border border-neutral-500"
+  >
+    <button
+      *ngFor="let option of options"
+      [ngClass]="option === selectedOption ? 'font-semibold' : ''"
+      class="p-1 text-center"
+      (click)="selectOption(option)"
+    >
+      {{ option }}
+    </button>
+  </div>
+</div>
