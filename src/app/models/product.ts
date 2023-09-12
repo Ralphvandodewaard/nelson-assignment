@@ -11,6 +11,10 @@ export interface Product {
       small: string,
       thumbnail: string
     },
-    price: string
+    price: string,
+    orderOptions?: {
+      [key: string]: string[]
+    },
+    optionProperties: string[],
   }
 }

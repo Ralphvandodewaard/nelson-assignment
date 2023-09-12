@@ -28,22 +28,23 @@ export class ApiService {
   }
 
   private mapProduct(response: ProductResponse): Product {
-    const responseData = response.data;
+    const product = response.data;
 
     return {
-      type: responseData.type,
-      id: responseData.id,
+      type: product.type,
+      id: product.id,
       attributes: {
-        name: responseData.attributes.name,
-        classification: responseData.attributes.product_classification,
-        description: responseData.attributes.description_bullet_points,
-        color: this.getColorAttribute(responseData.attributes.product_attributes),
+        name: product.attributes.name,
+        classification: product.attributes.product_classification,
+        description: product.attributes.description_bullet_points,
+        color: this.getColorAttribute(product.attributes.product_attributes),
         images: {
-          original: responseData.attributes.main_image.image_sizes.original,
-          small: responseData.attributes.main_image.image_sizes.small,
-          thumbnail: responseData.attributes.main_image.image_sizes.thumbnail
+          original: product.attributes.main_image.image_sizes.original,
+          small: product.attributes.main_image.image_sizes.small,
+          thumbnail: product.attributes.main_image.image_sizes.thumbnail
         },
-        price: responseData.attributes.price.attributes.min_regular_price.formatted
+        price: product.attributes.price.attributes.min_regular_price.formatted,
+        optionProperties: product.attributes.rollup_attributes
       }
     }
   }
@@ -75,7 +76,9 @@ export class ApiService {
           small: product.attributes.main_image.image_sizes.small,
           thumbnail: product.attributes.main_image.image_sizes.thumbnail
         },
-        price: product.attributes.price.min_regular_price.formatted
+        price: product.attributes.price.min_regular_price.formatted,
+        orderOptions: product.attributes.product_attributes,
+        optionProperties: product.attributes.rollup_attributes
       }
     }
   }

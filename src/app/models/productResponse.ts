@@ -22,7 +22,8 @@ export interface ProductResponse {
             formatted: string
           }
         }
-      }
+      },
+      rollup_attributes: string[]
     }
   }
 }

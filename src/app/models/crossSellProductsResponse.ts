@@ -13,13 +13,17 @@ export interface CrossSellProductsResponse {
                 thumbnail: string
               }
             },
+            product_attributes: {
+              [key: string]: string[]
+            },
             product_classification: string,
             name: string,
             price: {
               min_regular_price: {
                 formatted: string
               }
-            }
+            },
+            rollup_attributes: string[]
           }
         }
       }
