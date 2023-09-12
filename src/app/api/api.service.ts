@@ -5,6 +5,8 @@ import { map } from 'rxjs/operators';
 import { Product } from '../models/product';
 import { ProductResponse } from '../models/productResponse';
 import { productAttributeResponse } from '../models/productAttributeResponse';
+import { CrossSellProductsResponse } from '../models/crossSellProductsResponse';
+import { CrossSellProduct } from '../models/crossSellProduct';
 
 @Injectable({
   providedIn: 'root'
@@ -52,9 +54,30 @@ export class ApiService {
     return attribute?.value && typeof attribute.value === 'string' ? attribute.value : '';
   }
 
-  getCrossSellProductsById(id: number): Observable<any> {
+  getCrossSellProductsById(id: number): Observable<CrossSellProduct[]> {
     const url = this.crossSellProductsUrl + id + '.json';
 
-    return this.http.get(url);
+    return this.http.get<CrossSellProductsResponse>(url).pipe(
+      map((response) => response.data.hits.map((hit) => this.mapCrossSellProduct(hit)))
+    );
+  }
+
+  private mapCrossSellProduct(response: any): CrossSellProduct {
+    const product = response.attributes.product;
+
+    return {
+      type: product.type,
+      id: product.id,
+      attributes: {
+        name: product.attributes.name,
+        classification: product.attributes.product_classification,
+        images: {
+          original: product.attributes.main_image.image_sizes.original,
+          small: product.attributes.main_image.image_sizes.small,
+          thumbnail: product.attributes.main_image.image_sizes.thumbnail
+        },
+        price: product.attributes.price.min_regular_price.formatted
+      }
+    }
   }
 }
