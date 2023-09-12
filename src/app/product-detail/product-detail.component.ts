@@ -8,6 +8,8 @@ import { Product } from '../models/product';
   styleUrls: ['./product-detail.component.css']
 })
 export class ProductDetailComponent implements OnInit {
+  productId = 362950;
+
   product: Product | null = null;
 
   error: any | null = null;
@@ -19,11 +21,11 @@ export class ProductDetailComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getProduct();
+    this.getProductDetailsById();
   }
 
-  getProduct(): void {
-    this.apiService.getProduct().subscribe({
+  getProductDetailsById(): void {
+    this.apiService.getProductDetailsById(this.productId).subscribe({
       next: (response) => {
         this.product = response;
       },

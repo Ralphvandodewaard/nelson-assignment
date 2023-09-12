@@ -10,14 +10,16 @@ import { productAttributeResponse } from '../models/productAttributeResponse';
   providedIn: 'root'
 })
 export class ApiService {
-  private productUrl = '/api/20201005_frontend_assignment/prod_details_362950.json';
+  private productDetailsUrl = '/api/20201005_frontend_assignment/prod_details_';
 
   constructor(
     private http: HttpClient
   ) { }
 
-  getProduct(): Observable<Product> {
-    return this.http.get<ProductResponse>(this.productUrl).pipe(
+  getProductDetailsById(id: number): Observable<Product> {
+    const url = this.productDetailsUrl + id + '.json';
+
+    return this.http.get<ProductResponse>(url).pipe(
       map((response) => this.mapProduct(response))
     );
   }
