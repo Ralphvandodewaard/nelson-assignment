@@ -7,6 +7,7 @@ import { HeaderComponent } from './header/header.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { ConfirmationModalComponent } from './confirmation-modal/confirmation-modal.component';
 import { CtaButtonComponent } from './shared/cta-button/cta-button.component';
+import { ProductCardComponent } from './shared/product-card/product-card.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { CtaButtonComponent } from './shared/cta-button/cta-button.component';
     HeaderComponent,
     ProductDetailComponent,
     ConfirmationModalComponent,
-    CtaButtonComponent
+    CtaButtonComponent,
+    ProductCardComponent
   ],
   imports: [
     BrowserModule,

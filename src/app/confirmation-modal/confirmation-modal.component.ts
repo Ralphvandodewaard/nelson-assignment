@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ApiService } from '../api/api.service';
 import { Product } from '../models/product';
-import { CrossSellProduct } from '../models/crossSellProduct';
 
 @Component({
   selector: 'app-confirmation-modal',
@@ -11,7 +10,7 @@ import { CrossSellProduct } from '../models/crossSellProduct';
 export class ConfirmationModalComponent implements OnInit {
   @Input() product!: Product;
 
-  crossSellProducts: CrossSellProduct[] = [];
+  crossSellProducts: Product[] = [];
 
   error: any | null = null;
 

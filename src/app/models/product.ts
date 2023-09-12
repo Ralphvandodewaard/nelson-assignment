@@ -4,8 +4,8 @@ export interface Product {
   attributes: {
     name: string,
     classification: string,
-    description: string[],
-    color: string,
+    description?: string[],
+    color?: string,
     images: {
       original: string,
       small: string,

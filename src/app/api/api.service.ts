@@ -6,7 +6,6 @@ import { Product } from '../models/product';
 import { ProductResponse } from '../models/productResponse';
 import { productAttributeResponse } from '../models/productAttributeResponse';
 import { CrossSellProductsResponse } from '../models/crossSellProductsResponse';
-import { CrossSellProduct } from '../models/crossSellProduct';
 
 @Injectable({
   providedIn: 'root'
@@ -54,7 +53,7 @@ export class ApiService {
     return attribute?.value && typeof attribute.value === 'string' ? attribute.value : '';
   }
 
-  getCrossSellProductsById(id: number): Observable<CrossSellProduct[]> {
+  getCrossSellProductsById(id: number): Observable<Product[]> {
     const url = this.crossSellProductsUrl + id + '.json';
 
     return this.http.get<CrossSellProductsResponse>(url).pipe(
@@ -62,7 +61,7 @@ export class ApiService {
     );
   }
 
-  private mapCrossSellProduct(response: any): CrossSellProduct {
+  private mapCrossSellProduct(response: any): Product {
     const product = response.attributes.product;
 
     return {
