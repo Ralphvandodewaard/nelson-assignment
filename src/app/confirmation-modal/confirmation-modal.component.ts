@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ApiService } from '../api/api.service';
 import { Product } from '../models/product';
+import { CrossSellProduct } from '../models/crossSellProduct';
 
 @Component({
   selector: 'app-confirmation-modal',
@@ -9,6 +10,8 @@ import { Product } from '../models/product';
 })
 export class ConfirmationModalComponent implements OnInit {
   @Input() product!: Product;
+
+  crossSellProducts: CrossSellProduct[] = [];
 
   error: any | null = null;
 
@@ -23,7 +26,7 @@ export class ConfirmationModalComponent implements OnInit {
   getCrossSellProductsById(): void {
     this.apiService.getCrossSellProductsById(this.product.id).subscribe({
       next: (response) => {
-        console.log(response)
+        this.crossSellProducts = response;
       },
       error: (error) => {
         this.error = error;
