@@ -26,7 +26,10 @@
       <div *ngIf="options.length > 0">
         <app-select-input [options]="options"></app-select-input>
       </div>
-      <button class="col-start-2 w-full p-1 bg-orange-500 text-white">
+      <button
+        class="col-start-2 w-full p-1 bg-orange-500 text-white"
+        (click)="addProductToCart(product)"
+      >
         Toevoegen
       </button>
     </div>

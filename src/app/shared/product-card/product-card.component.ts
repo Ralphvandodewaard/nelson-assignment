@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Product } from 'src/app/models/product';
 
 @Component({
@@ -11,11 +11,17 @@ export class ProductCardComponent implements OnInit {
 
   @Input() isCrossSellProduct = false;
 
+  @Output() addToCart: EventEmitter<Product> = new EventEmitter<Product>;
+
   options: string[] = [];
 
   ngOnInit(): void {
     if (this.product.attributes.orderOptions) {
       this.options = this.product.attributes.orderOptions[this.product.attributes.optionProperties[0]];
     }
+  }
+
+  addProductToCart(product: Product): void {
+    this.addToCart.emit(product);
   }
 }

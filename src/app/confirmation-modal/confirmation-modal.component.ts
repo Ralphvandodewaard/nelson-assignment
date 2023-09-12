@@ -12,6 +12,8 @@ export class ConfirmationModalComponent implements OnInit {
 
   crossSellProducts: Product[] = [];
 
+  cart: Product[] = [];
+
   error: any | null = null;
 
   constructor(
@@ -19,6 +21,8 @@ export class ConfirmationModalComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.cart.push(this.product);
+
     this.getCrossSellProductsById();
   }
 
@@ -31,5 +35,9 @@ export class ConfirmationModalComponent implements OnInit {
         this.error = error;
       }
     })
+  }
+
+  addToCart(product: Product): void {
+    this.cart.push(product);
   }
 }
