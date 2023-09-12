@@ -12,6 +12,8 @@ import { productAttributeResponse } from '../models/productAttributeResponse';
 export class ApiService {
   private productDetailsUrl = '/api/20201005_frontend_assignment/prod_details_';
 
+  private crossSellProductsUrl = '/api/20201005_frontend_assignment/cross_sell_products_for_';
+
   constructor(
     private http: HttpClient
   ) { }
@@ -48,5 +50,11 @@ export class ApiService {
   private getColorAttribute(attributes: productAttributeResponse[]): string {
     const attribute = attributes.find((attribute) => attribute.name === 'color');
     return attribute?.value && typeof attribute.value === 'string' ? attribute.value : '';
+  }
+
+  getCrossSellProductsById(id: number): Observable<any> {
+    const url = this.crossSellProductsUrl + id + '.json';
+
+    return this.http.get(url);
   }
 }
