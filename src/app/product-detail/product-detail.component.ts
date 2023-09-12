@@ -12,6 +12,8 @@ export class ProductDetailComponent implements OnInit {
 
   error: any | null = null;
 
+  confirmationModalOpen = false;
+
   constructor(
     private apiService: ApiService
   ) { }
@@ -29,5 +31,9 @@ export class ProductDetailComponent implements OnInit {
         this.error = error;
       }
     })
+  }
+
+  addToCart(): void {
+    this.confirmationModalOpen = true;
   }
 }
