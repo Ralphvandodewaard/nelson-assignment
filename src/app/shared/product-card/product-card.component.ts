@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Product } from 'src/app/models/product';
 
 @Component({
@@ -6,6 +6,14 @@ import { Product } from 'src/app/models/product';
   templateUrl: './product-card.component.html',
   styleUrls: ['./product-card.component.css']
 })
-export class ProductCardComponent {
+export class ProductCardComponent implements OnInit {
   @Input() product!: Product;
+
+  options: string[] = [];
+
+  ngOnInit(): void {
+    if (this.product.attributes.orderOptions) {
+      this.options = this.product.attributes.orderOptions[this.product.attributes.optionProperties[0]];
+    }
+  }
 }
