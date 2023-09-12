@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Product } from '../models/product';
 
 @Component({
   selector: 'app-confirmation-modal',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./confirmation-modal.component.css']
 })
 export class ConfirmationModalComponent {
-
+  @Input() product!: Product;
 }

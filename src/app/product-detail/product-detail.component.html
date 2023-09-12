@@ -25,4 +25,7 @@
     In winkelmandje
   </button>
 </div>
-<app-confirmation-modal *ngIf="confirmationModalOpen"></app-confirmation-modal>
+<app-confirmation-modal
+  *ngIf="product && confirmationModalOpen"
+  [product]="product"
+  ></app-confirmation-modal>
