@@ -4,7 +4,7 @@
     [alt]="product.attributes.name"
     class="w-full sm:w-auto h-auto sm:h-40 border border-neutral-500"
   >
-  <div class="col-span-2 flex flex-col gap-2">
+  <div class="col-span-2 flex flex-col gap-2 sm:w-80">
     <div>
       <p class="font-semibold">
         {{ product.attributes.name }}
@@ -15,11 +15,19 @@
           - {{ product.attributes.color }}
         </span>
       </p>
+      <p>
+        {{ product.attributes.price }}
+      </p>
     </div>
-    <p>
-      {{ product.attributes.price }}
-    </p>
-    <div *ngIf="options.length > 0">
-      <app-select-input [options]="options"></app-select-input>
-  </div>
+    <div
+      *ngIf="isCrossSellProduct"
+      class="grid grid-cols-2 gap-1 mt-auto"
+    >
+      <div *ngIf="options.length > 0">
+        <app-select-input [options]="options"></app-select-input>
+      </div>
+      <button class="col-start-2 w-full p-1 bg-orange-500 text-white">
+        Toevoegen
+      </button>
+    </div>
 </div>
