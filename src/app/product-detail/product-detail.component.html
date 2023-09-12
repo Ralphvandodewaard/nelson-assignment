@@ -1,19 +1,22 @@
-<div class="flex flex-col gap-4">
+<div
+  *ngIf="product"
+  class="flex flex-col items-start gap-4"
+>
   <img
-    src="https://placehold.co/400x400"
-    alt="product image"
-    class="w-80 h-80"
+    [src]="product.attributes.images.original"
+    [alt]="product.attributes.name"
+    class="w-full sm:w-auto h-auto sm:h-80 border border-neutral-500"
   >
   <div>
     <p class="text-lg font-semibold">
-      Product title
+      {{ product.attributes.name }}
     </p>
     <p>
-      Product type
+      {{ product.attributes.classification }} - {{ product.attributes.color }}
     </p>
   </div>
   <p>
-    Product price
+    {{ product.attributes.price }}
   </p>
   <button class="flex w-fit px-4 py-2 bg-orange-400">
     In winkelmandje
