@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api/api.service';
+import { Product } from '../models/product';
 
 @Component({
   selector: 'app-product-detail',
@@ -7,7 +8,7 @@ import { ApiService } from '../api/api.service';
   styleUrls: ['./product-detail.component.css']
 })
 export class ProductDetailComponent implements OnInit {
-  product: any | null = null;
+  product: Product | null = null;
 
   error: any | null = null;
 
